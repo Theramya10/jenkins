@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', credentialsId: 'github-ssh-key', url: 'git@github.com:Theramya10/jenkins.git'
+                git branch: 'master', credentialsId: 'github-https', url: 'https://github.com/Theramya10/jenkins.git'
             }
         }
         stage('Terraform Init') {
