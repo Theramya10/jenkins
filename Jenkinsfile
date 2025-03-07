@@ -36,13 +36,14 @@ pipeline {
             }
         }
 
-        stage('Terraform Init') {
-            steps {
-                script {
-                    sh 'terraform init'
-                }
-            }
+      stage('Terraform Init') {
+    steps {
+        script {
+            sh 'terraform init -reconfigure'
         }
+    }
+}
+
 
         stage('Terraform Plan') {
             steps {
