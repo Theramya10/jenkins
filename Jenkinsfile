@@ -1,10 +1,17 @@
 pipeline {
     agent any
 
+    environment {
+        GIT_REPO = 'https://github.com/Theramya10/jenkins' // Update with your repo URL
+        GIT_BRANCH = 'master' // Update if needed
+    }
+
     stages {
         stage('Checkout Code') {
             steps {
-                git url: 'https://github.com/Theramya10/jenkins', branch: 'master'
+                script {
+                    git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
+                }
             }
         }
 
@@ -18,6 +25,8 @@ pipeline {
                             echo "" | sudo -S yum update -y
                         elif [ -f /etc/alpine-release ]; then
                             echo "" | sudo -S apk update
+                        elif grep -qi "amazon linux" /etc/os-release; then
+                            echo "" | sudo -S dnf update -y
                         else
                             echo "Unsupported OS"
                             exit 1
@@ -38,7 +47,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    sh 'terraform plan'
+                    sh 'terraform plan -out=tfplan'
                 }
             }
         }
@@ -46,7 +55,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 script {
-                    sh 'terraform apply -auto-approve'
+                    sh 'terraform apply -auto-approve tfplan'
                 }
             }
         }
