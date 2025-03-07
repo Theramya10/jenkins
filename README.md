@@ -28,11 +28,7 @@ java -version
 
 1.3 Install Jenkins
 
-sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
-sudo yum install jenkins -y
-sudo systemctl enable jenkins
-sudo systemctl start jenkins
+https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/
 
 👉 Access Jenkins:
 
