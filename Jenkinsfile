@@ -2,18 +2,27 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
-                script {
-                    checkout scm
-                }
+                git url: 'https://github.com/Theramya10/jenkins', branch: 'master'
             }
         }
 
         stage('Install Dependencies') {
             steps {
                 script {
-                    sh 'echo "" | sudo -S apt update'
+                    sh '''
+                        if [ -f /etc/debian_version ]; then
+                            echo "" | sudo -S apt update
+                        elif [ -f /etc/redhat-release ]; then
+                            echo "" | sudo -S yum update -y
+                        elif [ -f /etc/alpine-release ]; then
+                            echo "" | sudo -S apk update
+                        else
+                            echo "Unsupported OS"
+                            exit 1
+                        fi
+                    '''
                 }
             }
         }
