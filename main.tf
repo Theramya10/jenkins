@@ -2,16 +2,6 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-# S3 Backend for Terraform State Management
-terraform {
-  backend "s3" {
-    bucket         = "theramya10"
-    key            = "terraform.tfstate"
-    region         = "ap-south-1"
-    dynamodb_table = "terraform-lock"
-  }
-}
-
 # VPC Creation
 resource "aws_vpc" "main_vpc" {
   cidr_block = "10.0.0.0/16"
