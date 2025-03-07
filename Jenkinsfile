@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'manster', credentialsId: 'github-ssh-key', url: 'git@github.com:Theramya10/jenkins.git'
+                git branch: 'master', credentialsId: 'github-ssh-key', url: 'git@github.com:Theramya10/jenkins.git'
             }
         }
         stage('Terraform Init') {
@@ -21,11 +21,5 @@ pipeline {
                 sh 'terraform apply -auto-approve tfplan'
             }
         }
-         stage('Terraform validate') {
-            steps {
-                sh 'terraform validate'
-            }
-        }
- }
+    }
 }
-
