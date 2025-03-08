@@ -17,15 +17,6 @@ sudo yum install git -y
 
 git --version
 
-1.2 Install Java (Required for Jenkins)
-
-sudo amazon-linux-extras enable corretto8
-sudo yum install java-1.8.0-amazon-corretto -y
-
-👉 Verify Java Installation:
-
-java -version
-
 1.3 Install Jenkins
 
 https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/
