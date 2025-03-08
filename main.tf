@@ -80,7 +80,7 @@ resource "aws_lb" "app_lb" {
 # ASG & Launch Configuration
 resource "aws_launch_configuration" "app_lc" {
   name          = "app-lc"
-  image_id      = "ami-0d682f26195e9ec0f"
+  image_id      = "ami-05c179eced2eb9b5b"
   instance_type = "t2.micro"
   security_groups = [aws_security_group.bastion_sg.id]
   associate_public_ip_address = false
