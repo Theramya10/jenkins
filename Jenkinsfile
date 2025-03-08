@@ -9,7 +9,7 @@ pipeline {
             steps {
                 git branch: 'main', 
                     credentialsId: 'git-ssh-key', 
-                    url: 'git@github.com:your-username/your-terraform-repo.git'
+                    url: 'git@github.com:theramya10/jenkins.git'
             }
         }
         stage('Terraform Init') {
