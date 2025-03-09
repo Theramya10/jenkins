@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', 
+                git branch: 'master', 
                     credentialsId: 'git-ssh-key', 
                     url: 'git@github.com:theramya10/jenkins.git'
             }
