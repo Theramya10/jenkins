@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'master', url: 'git@github.com:theramya10/jenkins.git'
+                git branch: 'master', url: 'https://github.com/Theramya10/jenkins.git'
             }
         }
         stage('Terraform Init') {
