@@ -17,6 +17,13 @@ resource "aws_subnet" "public_subnet_1" {
   availability_zone = "ap-south-1a"
 }
 
+resource "aws_subnet" "public_subnet_2" {
+  vpc_id            = aws_vpc.main_vpc.id
+  cidr_block        = "10.0.3.0/24"
+  map_public_ip_on_launch = true
+  availability_zone = "ap-south-1b"
+}
+
 # Private Subnet (for ASG Instances)
 resource "aws_subnet" "private_subnet_1" {
   vpc_id = aws_vpc.main_vpc.id
@@ -74,7 +81,7 @@ resource "aws_lb" "app_lb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
-  subnets           = [aws_subnet.public_subnet_1.id]
+  subnets           = [aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id]
 }
 
 # ASG & Launch Configuration
@@ -92,4 +99,3 @@ resource "aws_autoscaling_group" "app_asg" {
   max_size            = 6
   vpc_zone_identifier = [aws_subnet.private_subnet_1.id]
 }
-
