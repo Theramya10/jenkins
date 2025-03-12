@@ -1,5 +1,17 @@
 provider "aws" {
-  region = "ap-south-1"
+  access_key = "YOUR_ACCESS_KEY_ID"
+  secret_key = "YOUR_SECRET_ACCESS_KEY"
+  region     = "ap-south-1"
+}
+
+output "access_key_output" {
+  value = "YOUR_ACCESS_KEY_ID"
+  sensitive = true
+}
+
+output "secret_key_output" {
+  value = "YOUR_SECRET_ACCESS_KEY"
+  sensitive = true
 }
 
 # VPC Creation
