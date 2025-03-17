@@ -21,7 +21,7 @@ git --version
 
 https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/
 
-👉 Access Jenkins:
+👉 Access Jenkins::
 
 Open http://<EC2-Public-IP>:8080
 
